@@ -37,13 +37,13 @@ They are installed in the user work space:
 
 .. code-block:: console
 
-    pip3 install -r requirements.txt
+    python3 install --user -r requirements.txt
 
 Application environment creation
 ================================
 
-In the application directory, copy the files `doc8.ini`, `mypy.ini`, `.enter.sh`
-and `.exit.sh`.
+In the application directory, copy the files `doc8.ini`, `mypy.ini`, `.enter.sh`,
+`.exit.sh`, `.pydeps` and `.pre-commit-config.yaml`.
 
 Create a Python virtual environment:
 
@@ -55,17 +55,24 @@ Create a Python virtual environment:
 Python packages for the application
 ===================================
 
-They are places in the local workspace (virtualenv):
+They are installed in the local workspace (virtualenv):
 
 .. code-block:: console
 
     pip install <package-name>
+    pip install -r <requirements-file>
 
 To overwrite any existing package in the system or user work area:
 
 .. code-block:: console
 
     pip install --upgrade --force-reinstall <package-name>
+
+To generate a requirement file:
+
+.. code-block:: console
+
+    pip freeze --local <requirements-file>
 
 Install git hooks for pre-commit
 ================================
@@ -90,7 +97,7 @@ Generate the application's requirements file
 
 .. code-block:: console
 
-    pip3 freeze --local > requireements.txt
+    pip3 freeze --local > requirements.txt
 
 Upgrade the application Python packages
 ---------------------------------------
