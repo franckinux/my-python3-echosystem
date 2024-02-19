@@ -8,7 +8,7 @@ docutils==0.20.1
 filelock==3.13.1
 flake8==7.0.0
 graphviz==0.20.1
-identify==2.5.33
+identify==2.5.35
 jedi==0.19.1
 mccabe==0.7.0
 mypy==1.8.0
@@ -19,9 +19,9 @@ packaging==23.2
 parso==0.8.3
 pbr==6.0.0
 pip-autoremove==0.10.0
-platformdirs==4.1.0
+platformdirs==4.2.0
 pluggy==1.4.0
-pre-commit==3.6.0
+pre-commit==3.6.2
 pycodestyle==2.11.1
 pycparser==2.21
 pydeps==1.12.18
