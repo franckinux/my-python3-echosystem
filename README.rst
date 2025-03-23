@@ -3,25 +3,28 @@ Indroduction
 
 System packages are unchanged.
 
-Python packages used for developping are common to all projects, they are
-installed in the user workspace (`~/.local/lib/python3.10/site-packages`).
+Python packages used for developping are installed in the user workspace
+(`~/.local/lib/python3.10/site-packages`). In the console where I edite the
+files, I don't activate the Python virtual environment. This enables to have the
+benefits of the language python server. For the installation see `Python
+development packages`_.
 
 Python packages used for the user application are installed in the local
-workspace (`<application-directory-name>/.venv/lib/python3.10/site-packages`).
+workspace (`<application-directory-name>/.venv/lib/python<python
+version>/site-packages`). In the console where I execute the Python program, I
+create a Python virtual environment where I install the application dependencies
+only.
 
 Installation
 ============
 
-Copy the file `cd.sh` in th home directory.
+Copy the file `cd.sh` in the home directory.
 
 Add the following lines to the `.bashrc` file:
 
 .. code-block:: console
 
     source ~/cd.sh
-    export PIP_REQUIRE_VIRTUALENV=false
-    export PIP_USER=true
-    export PYTHONPATH=''
 
 Install the following packages:
 
@@ -39,6 +42,8 @@ They are installed in the user work space:
 
     python3 install --user -r requirements.txt
 
+where the `requirements.txt` file is the one in this repository.
+
 Application environment creation
 ================================
 
@@ -49,18 +54,35 @@ Create a Python virtual environment:
 
 .. code-block:: console
 
-    pip3 -m venv .venv --prompt <application-name> --upgrade-deps --system-site-packages
+    pip3 -m venv .venv --prompt <application-name> --upgrade-deps --break-system-packages
     cd .
 
 Python packages for the application
 ===================================
 
+Prior to manage packages in the application's space, the virtual environement
+have to be activated :
+
+.. code-block:: console
+
+   cd <application directory>
+   # if you have adopted the cd.sh / .enter.sh technique
+   cd .
+   # or
+   source .venv/bin/activate
+
 They are installed in the local workspace (virtualenv):
 
 .. code-block:: console
 
+    # if the requitements.txt file does not exit yet
     pip install <package-name>
+    # or
     pip install -r <requirements-file>
+
+
+where the `requirements.txt` file comes fromethe application's reository, not
+the one in this repository.
 
 To overwrite any existing package in the system or user work area:
 
@@ -72,7 +94,7 @@ To generate a requirement file:
 
 .. code-block:: console
 
-    pip freeze --local <requirements-file>
+    pip freeze --local <requirements-file> > requirements.txt
 
 Install git hooks for pre-commit
 ================================
